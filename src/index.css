@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Patrick+Hand&family=Indie+Flower&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+.app-wrapper.dark-mode {
+  background: #0a0a0a;
+}
+
+.app-wrapper.light-mode {
+  background: #f5f5f5;
+}
+
+.floating-words-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-word {
+  position: absolute;
+  font-family: 'Caveat', 'Patrick Hand', 'Indie Flower', cursive;
+  font-size: clamp(1rem, 2.5vw, 3rem);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.05s linear;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.05em;
+}
+
+.floating-word.spinning {
+  animation: letterBlur 0.3s ease-in-out;
+}
+
+/* Mobile: smaller words */
+@media (max-width: 768px) {
+  .floating-word {
+    font-size: clamp(0.8rem, 2vw, 2rem);
+  }
+}
+
+@keyframes letterBlur {
+  0%, 100% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(2px);
+  }
+}
+
+.dark-mode .floating-word {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.light-mode .floating-word {
+  color: #000000;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .floating-word.spinning {
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.light-mode .floating-word.spinning {
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Add some variety to the fonts */
+.floating-word:nth-child(3n) {
+  font-family: 'Patrick Hand', cursive;
+}
+
+.floating-word:nth-child(3n+1) {
+  font-family: 'Indie Flower', cursive;
+}
+
+.floating-word:nth-child(3n+2) {
+  font-family: 'Caveat', cursive;
+}
+
+/* Container positioning */
+.py-4 {
+  position: relative;
+  z-index: 1;
+}
