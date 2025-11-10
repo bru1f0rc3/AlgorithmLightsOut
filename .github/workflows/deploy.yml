@@ -6,11 +6,12 @@ on:
       - master
 
 jobs:
-  permissions:
-    pages: write
-    id-token: write
+
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout code
@@ -28,10 +29,10 @@ jobs:
       - name: Build project
         run: npm run build
 
-- name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
-      with:
-        path: './dist'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
