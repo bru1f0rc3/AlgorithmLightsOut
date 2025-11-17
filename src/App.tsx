@@ -97,7 +97,7 @@ function App() {
       };
     };
 
-    const initialWords = Array.from({ length: 100 }, (_, i) => createWord(i));
+    const initialWords = Array.from({ length: 50 }, (_, i) => createWord(i));
     setFloatingWords(initialWords);
 
     const fallInterval = setInterval(() => {
